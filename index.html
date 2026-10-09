@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chetan Thakur | Lead Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #111827;
+  --bg-card: #1a2234;
+  --bg-card-hover: #1f2a40;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #38bdf8;
+  --accent-dim: rgba(56, 189, 248, 0.15);
+  --accent-glow: rgba(56, 189, 248, 0.3);
+  --green: #34d399;
+  --green-dim: rgba(52, 211, 153, 0.15);
+  --purple: #a78bfa;
+  --purple-dim: rgba(167, 139, 250, 0.15);
+  --border: #1e293b;
+  --border-light: #2d3a4f;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-brand {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.nav-brand span { color: var(--text-primary); }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 140px 0 80px;
+  position: relative;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.hero-text { flex: 1; }
+
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-dim);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--green);
+  margin-bottom: 24px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.hero-status .dot {
+  width: 7px;
+  height: 7px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin-bottom: 16px;
+}
+
+.hero h1 .accent {
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero .subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+.hero .subtitle strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0a0e17;
+}
+
+.btn-primary:hover {
+  background: #7dd3fc;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--accent-glow);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.stat-item h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1;
+}
+
+.stat-item p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 80px 0;
+}
+
+.section-header {
+  margin-bottom: 48px;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  margin-top: 12px;
+  border-radius: 2px;
+}
+
+/* ===== ABOUT ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.about-text p strong {
+  color: var(--text-primary);
+}
+
+.skill-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.skill-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skill-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.skill-bar-header span:first-child {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.skill-bar-header span:last-child {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+
+.skill-bar-track {
+  height: 6px;
+  background: var(--bg-card);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  width: 0;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== SKILLS TAGS ===== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.skill-category {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+  border-color: var(--border-light);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.skill-category h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-category h4 .icon {
+  font-size: 1rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.2s;
+}
+
+.skill-tag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* ===== EXPERIENCE ===== */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--purple), transparent);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 48px;
+}
+
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-dot {
+  position: absolute;
+  left: -32px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent);
+  z-index: 1;
+}
+
+.timeline-item:first-child .timeline-dot {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-dim);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.timeline-header h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.timeline-company {
+  font-size: 0.9rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.timeline-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.timeline-location {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timeline-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  line-height: 1.7;
+}
+
+.timeline-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.timeline-tech span {
+  background: var(--accent-dim);
+  color: var(--accent);
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+
+/* ===== SLIDER (shared) ===== */
+.slider-wrapper {
+  position: relative;
+  padding: 0 48px;
+}
+
+.slider-viewport {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 20px;
+  will-change: transform;
+}
+
+.slider-slide {
+  flex: 0 0 calc((100% - 40px) / 3);
+  min-width: 0;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  z-index: 10;
+  font-size: 1.2rem;
+}
+
+.slider-btn:hover {
+  background: var(--accent);
+  color: #0a0e17;
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.slider-btn.prev { left: 0; }
+.slider-btn.next { right: 0; }
+
+.slider-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.slider-btn:disabled:hover {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-light);
+  box-shadow: none;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-light);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.slider-dot.active {
+  background: var(--accent);
+  width: 24px;
+  border-radius: 4px;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.slider-dot:hover:not(.active) {
+  background: var(--text-muted);
+}
+
+/* ===== PROJECTS ===== */
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.project-card:hover {
+  border-color: var(--border-light);
+  background: var(--bg-card-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+}
+
+.project-card:hover::before { opacity: 1; }
+
+.project-card .project-icon {
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.project-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.project-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.project-tags span {
+  background: var(--purple-dim);
+  color: var(--purple);
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+
+/* ===== CERTIFICATIONS ===== */
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.cert-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+}
+
+.cert-card:hover {
+  border-color: var(--border-light);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.cert-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cert-card h4 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.cert-card p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ===== RECOMMENDATIONS ===== */
+.rec-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.rec-card:hover {
+  border-color: var(--border-light);
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow);
+}
+
+.rec-quote {
+  font-size: 2.5rem;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: Georgia, serif;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.rec-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.rec-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.rec-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0a0e17;
+  flex-shrink: 0;
+}
+
+.rec-author-info h5 {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.rec-author-info p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.rec-meta {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 4px;
+  opacity: 0.7;
+}
+
+/* ===== EDUCATION ===== */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.edu-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.edu-card:hover {
+  border-color: var(--border-light);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.edu-card .edu-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.edu-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.edu-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.edu-card .edu-location {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===== CONTACT ===== */
+.contact-section {
+  text-align: center;
+  padding: 80px 0 100px;
+}
+
+.contact-section h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.contact-section p {
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  font-size: 0.95rem;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.contact-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+footer p span { color: var(--accent); }
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .slider-slide {
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: rgba(10, 14, 23, 0.98);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links.open { display: flex; }
+
+  .mobile-menu-btn { display: block; }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero .subtitle { margin: 0 auto 28px; }
+
+  .hero-actions { justify-content: center; }
+
+  .hero-stats {
+    justify-content: center;
+    gap: 28px;
+  }
+
+  .about-grid { grid-template-columns: 1fr; }
+
+  .timeline-header { flex-direction: column; }
+
+  .timeline-date { align-self: flex-start; }
+
+  .slider-wrapper { padding: 0 36px; }
+
+  .slider-slide {
+    flex: 0 0 100%;
+  }
+
+  .slider-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .contact-links { flex-direction: column; align-items: center; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .hero { padding: 120px 0 60px; }
+  .hero-stats { flex-direction: column; gap: 20px; }
+  .stat-item { text-align: center; }
+  .slider-wrapper { padding: 0 32px; }
+  .slider-btn { width: 28px; height: 28px; font-size: 0.9rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-brand">CT<span>.dev</span></a>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <ul class="nav-links">
+      <li><a href="#about" onclick="closeMenu()">About</a></li>
+      <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+      <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
+      <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+      <li><a href="#certifications" onclick="closeMenu()">Certifications</a></li>
+      <li><a href="#recommendations" onclick="closeMenu()">Recommendations</a></li>
+      <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-status">
+          <span class="dot"></span>
+          Available for opportunities
+        </div>
+        <h1>
+          Hi, I'm <span class="accent">Chetan Thakur</span>
+        </h1>
+        <p class="subtitle">
+          <strong>Lead Software Engineer</strong> with 13+ years of experience building scalable 
+          microservices, AI-powered Salesforce applications, and modern web experiences using 
+          TypeScript, ReactJS, NodeJS, Java Spring Boot, and AWS/Azure.
+        </p>
+        <div class="hero-actions">
+          <a href="https://linkedin.com/in/chetan-thakur" target="_blank" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn Profile
+          </a>
+          <a href="https://chetan-thakur-fullstack-developer.github.io/My-Resume/" target="_blank" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Portfolio
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item"><h3>13+</h3><p>Years Experience</p></div>
+          <div class="stat-item"><h3>20+</h3><p>Projects Delivered</p></div>
+          <div class="stat-item"><h3>12</h3><p>Recommendations</p></div>
+          <div class="stat-item"><h3>7+</h3><p>Certifications</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">// About</div>
+      <h2 class="section-title">Professional Summary</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          I'm a <strong>Lead Software Engineer</strong> at Gartner Inc., based in Dallas, Texas, 
+          with over <strong>13 years of experience</strong> in developing, implementing, and 
+          maintaining enterprise-grade web applications, microservices, and cloud-native solutions.
+        </p>
+        <p>
+          My expertise spans <strong>Java Spring Boot, TypeScript, ReactJS, Angular, NodeJS, 
+          Salesforce LWC, and AWS/Azure cloud platforms</strong>. I currently lead the CPG HT 
+          products team, building AI-powered Salesforce Lightning applications integrating 
+          generative AI/LLM APIs into core sales workflows.
+        </p>
+        <p>
+          I'm passionate about clean architecture, mentoring teams, and delivering solutions 
+          that drive real business value. I've worked across banking (CITI), telecom (AT&T, Verizon), 
+          and enterprise SaaS (Gartner) domains, consistently delivering on time and exceeding expectations.
+        </p>
+      </div>
+      <div class="skill-bars reveal">
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>TypeScript / JavaScript</span><span>92%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>ReactJS</span><span>95%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Angular</span><span>90%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>NodeJS</span><span>90%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Java Spring Boot</span><span>90%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Salesforce LWC</span><span>88%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>AWS Cloud</span><span>85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>SQL / NoSQL</span><span>85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">// Tech Stack</div>
+      <h2 class="section-title">Technical Skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-category reveal">
+        <h4><span class="icon">⚡</span> Languages</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">TypeScript</span><span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">Java</span><span class="skill-tag">J2EE</span>
+          <span class="skill-tag">C#</span><span class="skill-tag">C++</span>
+          <span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
+          <span class="skill-tag">PL/SQL</span>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <h4><span class="icon">🎨</span> Frontend</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">ReactJS</span><span class="skill-tag">AngularJS</span>
+          <span class="skill-tag">Salesforce LWC</span><span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span><span class="skill-tag">jQuery</span>
+          <span class="skill-tag">Bootstrap</span><span class="skill-tag">Markdown/HTML</span>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <h4><span class="icon">⚙️</span> Backend & Frameworks</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">NodeJS</span><span class="skill-tag">Spring Boot</span>
+          <span class="skill-tag">Hibernate</span><span class="skill-tag">Struts</span>
+          <span class="skill-tag">Servlets</span><span class="skill-tag">JSP</span>
+          <span class="skill-tag">JSF</span><span class="skill-tag">EJB</span>
+          <span class="skill-tag">REST APIs</span><span class="skill-tag">GraphQL</span>
+          <span class="skill-tag">Microservices</span>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <h4><span class="icon">🤖</span> AI & Salesforce</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Generative AI</span>
+          <span class="skill-tag">LLM API Integration</span>
+          <span class="skill-tag">Salesforce LWC</span>
+          <span class="skill-tag">Salesforce Workspace APIs</span>
+          <span class="skill-tag">Context-Aware Permissioning</span>
+          <span class="skill-tag">Territory Alignment</span>
+          <span class="skill-tag">Telemetry & Logging</span>
+          <span class="skill-tag">Background Polling</span>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <h4><span class="icon">☁️</span> Cloud & DevOps</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS (Lambda, SQS, RDS, EK2, S3)</span>
+          <span class="skill-tag">Azure</span><span class="skill-tag">Docker</span>
+          <span class="skill-tag">Kubernetes</span><span class="skill-tag">Jenkins</span>
+          <span class="skill-tag">Terraform</span><span class="skill-tag">GitLab CI</span>
+          <span class="skill-tag">Circle CI</span>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <h4><span class="icon">🗄️</span> Databases</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">PostgreSQL</span><span class="skill-tag">Oracle 11i/12c</span>
+          <span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">Cassandra</span><span class="skill-tag">MS SQL</span>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <h4><span class="icon">🧪</span> Testing & Monitoring</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">JUnit</span><span class="skill-tag">Jasmine</span>
+          <span class="skill-tag">Jest</span><span class="skill-tag">Splunk</span>
+          <span class="skill-tag">Datadog</span><span class="skill-tag">Dynatrace</span>
+          <span class="skill-tag">Sentry</span><span class="skill-tag">Snyk</span>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <h4><span class="icon">📋</span> Methodologies & Tools</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Agile/Scrum</span><span class="skill-tag">SAFe 4</span>
+          <span class="skill-tag">JIRA</span><span class="skill-tag">Agile Craft</span>
+          <span class="skill-tag">Git</span><span class="skill-tag">SVN</span>
+          <span class="skill-tag">UML</span><span class="skill-tag">OOAD</span>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <h4><span class="icon">🖥️</span> IDEs & Servers</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">VS Code</span><span class="skill-tag">IntelliJ</span>
+          <span class="skill-tag">Eclipse</span><span class="skill-tag">Tomcat</span>
+          <span class="skill-tag">JBoss</span><span class="skill-tag">Weblogic</span>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <h4><span class="icon">🔌</span> APIs & Integration</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">CommerceTools</span><span class="skill-tag">Bing Maps API</span>
+          <span class="skill-tag">Pre-signed S3 URLs</span>
+          <span class="skill-tag">PowerPoint Generation</span>
+          <span class="skill-tag">HTTP 504 Handling</span>
+          <span class="skill-tag">Real-time Cancellation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">// Career</div>
+      <h2 class="section-title">Professional Experience</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div>
+            <h3>Lead Software Engineer</h3>
+            <div class="timeline-company">Gartner Inc.</div>
+          </div>
+          <div class="timeline-date">Sep 2019 – Present</div>
+        </div>
+        <div class="timeline-location">📍 Dallas, Texas, USA</div>
+        <div class="timeline-desc">
+          Leading the CPG HT products team using microservices and React UI. Building AI-powered 
+          Salesforce Lightning applications (Sales Assistant, Retention Lifecycle Assistant) 
+          integrating generative AI/LLM APIs into core sales workflows. Developed Client Presentation 
+          Generator, Scorecard Generation, Secure Document Exchange, and Service Action Recommendations. 
+          Coordinating with business stakeholders, defining roadmaps, and delivering biweekly releases 
+          via CI/CD.
+        </div>
+        <div class="timeline-tech">
+          <span>TypeScript</span><span>ReactJS</span><span>Salesforce LWC</span><span>GenAI</span>
+          <span>LLM APIs</span><span>AWS</span><span>Azure</span><span>PostgreSQL</span>
+          <span>Oracle</span><span>MySQL</span><span>Jenkins</span><span>Terraform</span>
+          <span>Microservices</span><span>Telemetry</span>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div>
+            <h3>Assistant Consultant</h3>
+            <div class="timeline-company">Tata Consultancy Services</div>
+          </div>
+          <div class="timeline-date">Jul 2022 – Sep 2022</div>
+        </div>
+        <div class="timeline-location">📍 Dallas, Texas, USA</div>
+        <div class="timeline-desc">
+          Worked as a Senior Consultant for CITI banking domain, developing a tool to manage 
+          business data and create reports for business analysts using TypeScript, NodeJS, 
+          AWS, Azure, MongoDB, and Microservices.
+        </div>
+        <div class="timeline-tech">
+          <span>TypeScript</span><span>NodeJS</span><span>AWS</span><span>Azure</span>
+          <span>MongoDB</span><span>REST APIs</span><span>Microservices</span>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div>
+            <h3>Technical Lead</h3>
+            <div class="timeline-company">HCL America Inc.</div>
+          </div>
+          <div class="timeline-date">Jul 2019 – Jul 2022</div>
+        </div>
+        <div class="timeline-location">📍 Dallas, Texas, USA</div>
+        <div class="timeline-desc">
+          Led SDX NodeJS microservices and Angular UI for Verizon. Developed Offers/Products/Benefits 
+          microservices for AT&T. Managed onshore/offshore coordination, code reviews, automation 
+          testing, and biweekly releases using GitLab, Terraform, and AWS RDS.
+        </div>
+        <div class="timeline-tech">
+          <span>AngularJS</span><span>TypeScript</span><span>NodeJS</span><span>AWS RDS</span>
+          <span>AWS EK2</span><span>PostgreSQL</span><span>GraphQL</span><span>Circle CI</span>
+          <span>Kubernetes</span><span>Docker</span>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div>
+            <h3>Senior Software Engineer</h3>
+            <div class="timeline-company">ITBRIZ LLC</div>
+          </div>
+          <div class="timeline-date">Nov 2016 – Jul 2019</div>
+        </div>
+        <div class="timeline-location">📍 Dallas, Texas, USA</div>
+        <div class="timeline-desc">
+          Full-stack developer & tester for web applications with reporting and analytics. 
+          Worked on AT&T projects including Vendor Fulfillment, Real-time Inventory, Wireless 
+          Coverage Map, and Store Locator. Developed microservices using Spring Boot and ReactJS.
+        </div>
+        <div class="timeline-tech">
+          <span>ReactJS</span><span>Spring Boot</span><span>AngularJS</span><span>Java</span>
+          <span>Cassandra</span><span>Adobe Analytics</span><span>JUnit</span><span>Jasmine</span>
+          <span>Jest</span><span>Bing Maps API</span>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div>
+            <h3>System Analyst Engineer</h3>
+            <div class="timeline-company">Saffron Tech Pvt. Ltd.</div>
+          </div>
+          <div class="timeline-date">Oct 2015 – Nov 2016</div>
+        </div>
+        <div class="timeline-location">📍 New Delhi, India</div>
+        <div class="timeline-desc">
+          Java Developer for secure purchasing portals. Worked on Bluefish Sport, Asaf-Ganot, 
+          and Anima Domus. Used Struts, JSP, and JavaScript for client/server-side validation.
+        </div>
+        <div class="timeline-tech">
+          <span>Java</span><span>JSP</span><span>Struts</span><span>SQL</span>
+          <span>HTML</span><span>CSS</span><span>JavaScript</span><span>JIRA</span>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div>
+            <h3>Software Developer</h3>
+            <div class="timeline-company">Total Wireless Technologies Pvt. Ltd.</div>
+          </div>
+          <div class="timeline-date">Oct 2013 – Oct 2014</div>
+        </div>
+        <div class="timeline-location">📍 New Delhi, India</div>
+        <div class="timeline-desc">
+          Junior Java developer for GPS tracking web applications. Developed using J2EE, 
+          Struts MVC, JSP, and SOAP web services. Implemented DAO patterns and stored procedures.
+        </div>
+        <div class="timeline-tech">
+          <span>Java</span><span>Struts</span><span>JSP</span><span>XML</span>
+          <span>SQL</span><span>SOAP</span><span>JMS</span><span>JUnit</span>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <div>
+            <h3>Freelance Web Developer</h3>
+            <div class="timeline-company">Webspro Technosys</div>
+          </div>
+          <div class="timeline-date">Aug 2010 – Nov 2016</div>
+        </div>
+        <div class="timeline-location">📍 New Delhi, India</div>
+        <div class="timeline-desc">
+          Freelance web application development, UI design, wireframing, and prototyping. 
+          Worked with Java, Web 2.0, J2EE, Weblogic, EJB, and Oracle 10g.
+        </div>
+        <div class="timeline-tech">
+          <span>Java</span><span>J2EE</span><span>Weblogic</span><span>EJB</span>
+          <span>Oracle 10g</span><span>PL/SQL</span><span>HTML5</span><span>CSS3</span>
+          <span>AngularJS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS (SLIDER) -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">// Portfolio</div>
+      <h2 class="section-title">Key Projects</h2>
+      <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.9rem;">
+        14 projects spanning AI, Salesforce, microservices, telecom, and e-commerce.
+      </p>
+    </div>
+    <div class="slider-wrapper reveal" id="projectsSlider">
+      <button class="slider-btn prev" aria-label="Previous projects">‹</button>
+      <div class="slider-viewport">
+        <div class="slider-track">
+
+          <div class="slider-slide">
+            <div class="project-card">
+              <span class="project-icon">🤖</span>
+              <h3>Sales Assistant</h3>
+              <p>High-performance Salesforce LWC chat interface integrating generative AI into sales workflows. Features contextual account insights, automated prompt execution, Markdown/HTML rendering, sub-prompt accordions, custom queries, and real-time request cancellation. Implemented custom background polling for HTTP 504 timeouts on LLM calls, context-aware permissioning, and Salesforce Workspace APIs with centralized telemetry logging.</p>
+              <div class="project-tags">
+                <span>Salesforce LWC</span><span>GenAI</span><span>LLM APIs</span><span>Telemetry</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="project-card">
+              <span class="project-icon">📊</span>
+              <h3>Retention Lifecycle Assistant</h3>
+              <p>AI-powered Salesforce Lightning app for QBR preparation. Guides users through licensed user selection, Mission-Critical Priorities review, Client Initiatives, AI-based QBR insights generation, and final presentation curation. Integrates Salesforce data with LLM API and Client Presentation APIs to produce downloadable Impact Assessment PowerPoint decks while enforcing user permissions, territory alignment, and data security.</p>
+              <div class="project-tags">
+                <span>Salesforce</span><span>LLM API</span><span>PowerPoint</span><span>Data Security</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="project-card">
+              <span class="project-icon">📽️</span>
+              <h3>Client Presentation Generator</h3>
+              <p>Online tool to create client presentations with slide decks for Sales, Impact Assessment, and Engagement Planning. Centralized platform for interactive presentations, quarterly reviews, and client-sales associate connections.</p>
+              <div class="project-tags">
+                <span>ReactJS</span><span>TypeScript</span><span>AWS</span><span>Microservices</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="project-card">
+              <span class="project-icon">🎯</span>
+              <h3>Service Action Recommendations</h3>
+              <p>AI-driven Salesforce LWC designed to streamline CSX workflows. Brings together client data, highlights priorities, suggests focus areas, and captures value statements to reduce search time and drive better results.</p>
+              <div class="project-tags">
+                <span>Salesforce LWC</span><span>AI</span><span>Client Data</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="project-card">
+              <span class="project-icon">📋</span>
+              <h3>Scorecard Generation</h3>
+              <p>Scorecard and Entitlement management system with full CRUD operations. Renders scorecards as interactive presentation slides with live data editing, saving, and refreshing. Modular component-based architecture with admin entitlement management.</p>
+              <div class="project-tags">
+                <span>CRUD</span><span>Interactive Slides</span><span>Entitlements</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="project-card">
+              <span class="project-icon">🔐</span>
+              <h3>Secure Document Exchange</h3>
+              <p>Consumer file upload/download system with directory management. Supports creating, retrieving, modifying, and deleting directories; uploading, deleting files, and downloading via pre-signed S3 links. Uses Data Management Service for file storage.</p>
+              <div class="project-tags">
+                <span>S3</span><span>Pre-signed URLs</span><span>Microservices</span><span>Security</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="project-card">
+              <span class="project-icon">📦</span>
+              <h3>Bizcomp – MyTracker & Archive</h3>
+              <p>Service Transaction Microservices using Spring Boot to retrieve details based on FAN and MDN. Archive UI built with Spring Boot Microservice and ReactJS for archive estimation and operations based on configurations.</p>
+              <div class="project-tags">
+                <span>Spring Boot</span><span>ReactJS</span><span>Microservices</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="project-card">
+              <span class="project-icon">🛒</span>
+              <h3>Centralized Products & Offers Platform</h3>
+              <p>Implemented Offers, Products, Benefits, and Pricing APIs for AT&T's online consumers. Worked with CommerceTools for promotion import, creation, update, and deletion by stakeholders. Enabled marketplace functionality for third-party vendors.</p>
+              <div class="project-tags">
+                <span>AWS</span><span>CommerceTools</span><span>APIs</span><span>Promotions</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="project-card">
+              <span class="project-icon">💄</span>
+              <h3>ULTA DSOTF – Account</h3>
+              <p>Interface for authenticated/new ULTA Beauty customers to view account information, saved shipping addresses, favorite items, and previously ordered items.</p>
+              <div class="project-tags">
+                <span>E-commerce</span><span>Account Management</span><span>UI</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="project-card">
+              <span class="project-icon">🗼</span>
+              <h3>Luminate Control Tower</h3>
+              <p>Admin panel for user management, role and policy assignment per user group, with update and delete capabilities. Independent module with future JDA product integration capability.</p>
+              <div class="project-tags">
+                <span>Admin Panel</span><span>RBAC</span><span>User Management</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="project-card">
+              <span class="project-icon">🏪</span>
+              <h3>Vendor Fulfillment</h3>
+              <p>Integrated third-party vendor inventory into AT&T to enable marketplace functionality, allowing AT&T to sell third-party devices on their platform.</p>
+              <div class="project-tags">
+                <span>ReactJS</span><span>Spring Boot</span><span>Marketplace</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="project-card">
+              <span class="project-icon">🗺️</span>
+              <h3>AT&T Coverage Map</h3>
+              <p>Single Page Application (SPA) displaying AT&T wireless coverage across the USA and international boundaries. Interactive Bing map with store information, directions, and zipcode filtering.</p>
+              <div class="project-tags">
+                <span>SPA</span><span>Bing Maps API</span><span>ReactJS</span><span>Spring Boot</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="project-card">
+              <span class="project-icon">📍</span>
+              <h3>AT&T Store Locator</h3>
+              <p>Developed store locator page to find available AT&T stores near your location or zipcode with interactive map integration.</p>
+              <div class="project-tags">
+                <span>ReactJS</span><span>Spring Boot</span><span>Maps</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="project-card">
+              <span class="project-icon">📈</span>
+              <h3>Reporting & Analytics Dashboards</h3>
+              <p>Created reporting and analytics dashboards for business requirements, including patient data reporting at ITBriz. Generated reports as per business needs.</p>
+              <div class="project-tags">
+                <span>Analytics</span><span>Reporting</span><span>Dashboards</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <button class="slider-btn next" aria-label="Next projects">›</button>
+      <div class="slider-dots" id="projectsDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">// Credentials</div>
+      <h2 class="section-title">Certifications</h2>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card reveal">
+        <span class="cert-icon">☁️</span>
+        <div><h4>Microsoft Certified: Azure Fundamentals</h4><p>Microsoft · 2021</p></div>
+      </div>
+      <div class="cert-card reveal">
+        <span class="cert-icon">🌐</span>
+        <div><h4>AWS: The Complete Introduction</h4><p>Udemy · 2019</p></div>
+      </div>
+      <div class="cert-card reveal">
+        <span class="cert-icon">🔧</span>
+        <div><h4>DevOps: CI/CD with Jenkins using Pipelines and Docker</h4><p>Udemy · 2019</p></div>
+      </div>
+      <div class="cert-card reveal">
+        <span class="cert-icon">🧩</span>
+        <div><h4>Microservices Fundamentals</h4><p>Udemy · UC-J1LGRYBO</p></div>
+      </div>
+      <div class="cert-card reveal">
+        <span class="cert-icon">☕</span>
+        <div><h4>Core & Advanced Java with Spring & Hibernate</h4><p>Tech Mentro · 2015</p></div>
+      </div>
+      <div class="cert-card reveal">
+        <span class="cert-icon">🚀</span>
+        <div><h4>The Complete Microservices with Spring Course</h4><p>Udemy · 2019</p></div>
+      </div>
+      <div class="cert-card reveal">
+        <span class="cert-icon">📐</span>
+        <div><h4>SAFe 4 Practitioner Certification</h4><p>Scaled Agile, Inc. · 07495268-7338</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS (SLIDER) -->
+<section id="recommendations">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">// Testimonials</div>
+      <h2 class="section-title">Recommendations</h2>
+      <p style="color: var(--text-secondary); margin-top: 8px; font-size: 0.9rem;">
+        12 recommendations from managers, peers, and colleagues across Gartner, AT&T, Verizon, and more.
+      </p>
+    </div>
+    <div class="slider-wrapper reveal" id="recsSlider">
+      <button class="slider-btn prev" aria-label="Previous recommendations">‹</button>
+      <div class="slider-viewport">
+        <div class="slider-track">
+
+          <div class="slider-slide">
+            <div class="rec-card">
+              <div class="rec-quote">"</div>
+              <p class="rec-text">
+                I had the pleasure of working with Chetan Thakur at Gartner Inc., where he consistently 
+                impressed me with his technical ability and proactive attitude. He was always quick to 
+                step up and take ownership of tasks, often volunteering before being asked, and following 
+                through with high-quality work. What made Chetan truly stand out was his collaborative 
+                nature. He was approachable, helpful, and always willing to support the team. Chetan is 
+                a dependable, talented developer and a great team player. I would happily work with him again.
+              </p>
+              <div class="rec-author">
+                <div class="rec-avatar">KO</div>
+                <div class="rec-author-info">
+                  <h5>Kimberly O'Brien, MBA</h5>
+                  <p>Technology Leader | Program Management</p>
+                  <p class="rec-meta">May 28, 2025 · Managed Chetan directly</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="rec-card">
+              <div class="rec-quote">"</div>
+              <p class="rec-text">
+                Chetan has shown himself to be an excellent developer. He has a great attitude, and 
+                command of the subject matter. I found him to always meet his dates and milestones, 
+                to be punctual, and very open with quality feedback. I would love the chance to work 
+                with him again, and feel he would add tremendous value to any organization.
+              </p>
+              <div class="rec-author">
+                <div class="rec-avatar">RS</div>
+                <div class="rec-author-info">
+                  <h5>Rod Simms</h5>
+                  <p>Principal Product Manager | Enterprise Product Operations Leader</p>
+                  <p class="rec-meta">May 17, 2021 · Managed Chetan directly</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="rec-card">
+              <div class="rec-quote">"</div>
+              <p class="rec-text">
+                Chetan is an extremely skilled software engineer with an always ready to help attitude. 
+                He is very knowledgeable and does not think twice before sharing his knowledge with others. 
+                He is always ready to take on challenges, be it projects or learning new technologies. 
+                His can-do attitude always helps the scrum team achieve all the goals. I was fortunate 
+                to have Chetan in my scrum team.
+              </p>
+              <div class="rec-author">
+                <div class="rec-avatar">RS</div>
+                <div class="rec-author-info">
+                  <h5>Rakhee Sawant</h5>
+                  <p>Lead Technical Program Manager at Mastercard</p>
+                  <p class="rec-meta">Oct 4, 2020 · Worked with Chetan in the same group</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="rec-card">
+              <div class="rec-quote">"</div>
+              <p class="rec-text">
+                I thoroughly enjoyed working with Chetan. We were involved in an extremely complex 
+                project and his technical knowledge and work attitude truly impressed me. Chetan is 
+                an extremely good listener and was always willing to go the extra mile to provide a 
+                quality end result while at the same time providing understandable explanations to 
+                the approach being pursued. Would love to work with him again in the future.
+              </p>
+              <div class="rec-author">
+                <div class="rec-avatar">BS</div>
+                <div class="rec-author-info">
+                  <h5>Bob Stanturf</h5>
+                  <p>Móna Consulting LLC</p>
+                  <p class="rec-meta">Jul 7, 2020 · Worked with Chetan in different groups</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="rec-card">
+              <div class="rec-quote">"</div>
+              <p class="rec-text">
+                I worked with Chetan for a few months in 2019 when he was part of the commerce tools 
+                development team at AT&T. He was one of the key developers our team relied on when 
+                building our product structure as part of the product and offers platform. He was very 
+                knowledgeable and skilled, and always completed his deliverables on time with focus on 
+                quality. He had excellent work ethics and attitude and worked well with everyone. I 
+                highly recommend Chetan and believe he will be a valuable asset to any company.
+              </p>
+              <div class="rec-author">
+                <div class="rec-avatar">SG</div>
+                <div class="rec-author-info">
+                  <h5>Sudha Gopal</h5>
+                  <p>Lead Product Marketing Manager at DIRECTV</p>
+                  <p class="rec-meta">Nov 21, 2019 · Worked with Chetan in the same group</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="rec-card">
+              <div class="rec-quote">"</div>
+              <p class="rec-text">
+                Chetan is bright, helpful and a pleasure to work with. They navigated some seriously 
+                confusing code with ease. Chetan was essential to our team, providing excellent assistance 
+                with implementing new features and bug correction. I cannot recommend working with Chetan 
+                enough. I hope I get another chance to work with them in the future!
+              </p>
+              <div class="rec-author">
+                <div class="rec-avatar">CS</div>
+                <div class="rec-author-info">
+                  <h5>Chris Svajlenka</h5>
+                  <p>E-commerce software engineer</p>
+                  <p class="rec-meta">Nov 14, 2019 · Senior to Chetan but didn't manage directly</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="rec-card">
+              <div class="rec-quote">"</div>
+              <p class="rec-text">
+                It was pleasure to have Chetan in my team, he is a very versatile, detail oriented, 
+                hard working team member. He is a very collaborative member who has good listening ears 
+                and clear way of communicating his point of view. Chetan exhibited good influencing 
+                skills in brain storming sessions by leading & closing the design sessions with fellow 
+                team members. He will be a great asset to any team he joins.
+              </p>
+              <div class="rec-author">
+                <div class="rec-avatar">AR</div>
+                <div class="rec-author-info">
+                  <h5>Andy Raghavendran</h5>
+                  <p>Transforming Product & Engineering teams</p>
+                  <p class="rec-meta">Nov 9, 2019 · Managed Chetan directly</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="rec-card">
+              <div class="rec-quote">"</div>
+              <p class="rec-text">
+                Chetan is one of the most valuable people I have ever met. Both smart and professional. 
+                Experienced, deadline oriented and intelligent person with exceptional product catalog 
+                and development skills. Highly recommended.
+              </p>
+              <div class="rec-author">
+                <div class="rec-avatar">DP</div>
+                <div class="rec-author-info">
+                  <h5>Dankit Patel</h5>
+                  <p>Principal Product Manager at DirecTV</p>
+                  <p class="rec-meta">Nov 5, 2019 · Worked with Chetan in the same group</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="rec-card">
+              <div class="rec-quote">"</div>
+              <p class="rec-text">
+                Chetan and his team are some of the best developers I have worked with in my 16+ years 
+                at AT&T. He was always willing to be creative in his approaches and give suggestions 
+                and solutions that best fit the business need and the timeline. He is extremely patient, 
+                especially with people like myself who are less technical. Chetan is truly a wonderful 
+                teammate and will be a huge benefit to any company that he works for.
+              </p>
+              <div class="rec-author">
+                <div class="rec-avatar">MM</div>
+                <div class="rec-author-info">
+                  <h5>Meghan Kelly Montana</h5>
+                  <p>Senior Product Manager | Storyteller | Culture Leader</p>
+                  <p class="rec-meta">May 7, 2019 · Worked with Chetan in the same group</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="rec-card">
+              <div class="rec-quote">"</div>
+              <p class="rec-text">
+                I worked with Chetan at AT&T during new project as well as sustainment releases. He 
+                always turned out to be an outstanding performer in his area and would almost always 
+                have the solutions to problems that were reported. His key strengths are in angularjs, 
+                reactjs, jsp javascript areas and he's remarkable at handling any projects assigned to 
+                him in general.
+              </p>
+              <div class="rec-author">
+                <div class="rec-avatar">NS</div>
+                <div class="rec-author-info">
+                  <h5>Neha Singh</h5>
+                  <p>Senior Security Engineer at PLAYSTUDIOS Inc.</p>
+                  <p class="rec-meta">May 4, 2019 · Worked with Chetan in different groups</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="rec-card">
+              <div class="rec-quote">"</div>
+              <p class="rec-text">
+                I worked with Chetan for about a year. In that time, I have known him to be the consummate 
+                professional who knows his stuff. He is a fast learner and is able to quickly adapt to 
+                whatever technology we adopted on projects. Most importantly, Chetan is always available 
+                to help us, his teammates, even if it means dropping what he has at hand. To me, that's 
+                the ultimate example of a true team player. If given the opportunity, I would definitely 
+                work with him again.
+              </p>
+              <div class="rec-author">
+                <div class="rec-avatar">IA</div>
+                <div class="rec-author-info">
+                  <h5>Itoro Akpan-Iquot, CSM, CSPO</h5>
+                  <p>Web Developer | Certified Scrum Master & Product Owner</p>
+                  <p class="rec-meta">May 1, 2019 · Worked with Chetan in the same group</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-slide">
+            <div class="rec-card">
+              <div class="rec-quote">"</div>
+              <p class="rec-text">
+                Chetan is very proactive and clear in his approach. He is a quick decision maker who 
+                very well knows how to retain customers. With his ideology, I gained what I really expected.
+              </p>
+              <div class="rec-author">
+                <div class="rec-avatar">KB</div>
+                <div class="rec-author-info">
+                  <h5>Kapil Bhargava ✌️</h5>
+                  <p>Founder, Digital Marketing Consultant & Strategist</p>
+                  <p class="rec-meta">Jan 15, 2017 · Worked with Chetan but at different companies</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <button class="slider-btn next" aria-label="Next recommendations">›</button>
+      <div class="slider-dots" id="recsDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">// Education</div>
+      <h2 class="section-title">Academic Background</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-year">2010 – 2013</div>
+        <h3>Master of Computer Application</h3>
+        <p>Guru Gobind Singh Indraprastha University</p>
+        <div class="edu-location">📍 New Delhi, India</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-year">2010 – 2013</div>
+        <h3>Bachelor of Computer Application</h3>
+        <p>Guru Nanak Dev University</p>
+        <div class="edu-location">📍 Amritsar, Punjab, India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" style="justify-content:center; display:flex;">// Get in Touch</div>
+      <h2>Let's Connect</h2>
+      <p>I'm always open to discussing new opportunities, collaborations, or just talking tech.</p>
+      <div class="contact-links">
+        <a href="https://linkedin.com/in/chetan-thakur" target="_blank" class="contact-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://chetan-thakur-fullstack-developer.github.io/My-Resume/" target="_blank" class="contact-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Portfolio
+        </a>
+        <a href="https://github.com/chetan-thakur-fullstack-developer" target="_blank" class="contact-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2025 <span>Chetan Thakur</span> · Built with ❤️ and clean code</p>
+  </div>
+</footer>
+
+<script>
+/* ===== MOBILE MENU ===== */
+function closeMenu() {
+  document.querySelector('.nav-links').classList.remove('open');
+}
+
+/* ===== SCROLL REVEAL ===== */
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      if (entry.target.querySelector('.skill-bar-fill')) {
+        entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+      }
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+revealElements.forEach(el => revealObserver.observe(el));
+
+/* ===== SKILL BARS ON LOAD ===== */
+window.addEventListener('load', () => {
+  document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+    const rect = bar.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 300);
+    }
+  });
+});
+
+/* ===== NAVBAR SCROLL EFFECT ===== */
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.pageYOffset > 50) {
+    nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+  } else {
+    nav.style.boxShadow = 'none';
+  }
+});
+
+/* ===== ACTIVE NAV LINK ===== */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (window.pageYOffset >= sectionTop) {
+      current = section.getAttribute('id');
+    }
+  });
+  navLinks.forEach(link => {
+    link.style.color = '';
+    if (link.getAttribute('href') === '#' + current) {
+      link.style.color = 'var(--accent)';
+    }
+  });
+});
+
+/* ===== SLIDER ENGINE ===== */
+class AutoSlider {
+  constructor(wrapperId, dotsId, autoplayInterval = 5000) {
+    this.wrapper = document.getElementById(wrapperId);
+    if (!this.wrapper) return;
+    
+    this.track = this.wrapper.querySelector('.slider-track');
+    this.slides = Array.from(this.wrapper.querySelectorAll('.slider-slide'));
+    this.prevBtn = this.wrapper.querySelector('.slider-btn.prev');
+    this.nextBtn = this.wrapper.querySelector('.slider-btn.next');
+    this.dotsContainer = document.getElementById(dotsId);
+    this.currentIndex = 0;
+    this.autoplayInterval = autoplayInterval;
+    this.autoplayTimer = null;
+    this.isHovered = false;
+    this.totalSlides = this.slides.length;
+
+    this.init();
+  }
+
+  getSlidesPerView() {
+    const width = window.innerWidth;
+    if (width <= 768) return 1;
+    if (width <= 1024) return 2;
+    return 3;
+  }
+
+  getMaxIndex() {
+    return Math.max(0, this.totalSlides - this.getSlidesPerView());
+  }
+
+  init() {
+    this.renderDots();
+    this.update();
+    this.bindEvents();
+    this.startAutoplay();
+  }
+
+  renderDots() {
+    if (!this.dotsContainer) return;
+    this.dotsContainer.innerHTML = '';
+    const maxIndex = this.getMaxIndex();
+    for (let i = 0; i <= maxIndex; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('slider-dot');
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.addEventListener('click', () => {
+        this.currentIndex = i;
+        this.update();
+        this.restartAutoplay();
+      });
+      this.dotsContainer.appendChild(dot);
+    }
+  }
+
+  update() {
+    const slidesPerView = this.getSlidesPerView();
+    const maxIndex = this.getMaxIndex();
+    
+    // Clamp index
+    if (this.currentIndex > maxIndex) this.currentIndex = maxIndex;
+    if (this.currentIndex < 0) this.currentIndex = 0;
+
+    // Calculate slide width including gap
+    const slideWidth = this.slides[0].getBoundingClientRect().width;
+    const gap = 20; // matches CSS gap
+    const offset = -(this.currentIndex * (slideWidth + gap));
+    
+    this.track.style.transform = `translateX(${offset}px)`;
+
+    // Update dots
+    if (this.dotsContainer) {
+      const dots = this.dotsContainer.querySelectorAll('.slider-dot');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === this.currentIndex);
+      });
+    }
+
+    // Update buttons
+    if (this.prevBtn) this.prevBtn.disabled = this.currentIndex === 0;
+    if (this.nextBtn) this.nextBtn.disabled = this.currentIndex >= maxIndex;
+  }
+
+  next() {
+    const maxIndex = this.getMaxIndex();
+    if (this.currentIndex < maxIndex) {
+      this.currentIndex++;
+    } else {
+      this.currentIndex = 0; // loop back
+    }
+    this.update();
+  }
+
+  prev() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+    } else {
+      this.currentIndex = this.getMaxIndex(); // loop to end
+    }
+    this.update();
+  }
+
+  goTo(index) {
+    this.currentIndex = index;
+    this.update();
+  }
+
+  startAutoplay() {
+    this.stopAutoplay();
+    this.autoplayTimer = setInterval(() => {
+      if (!this.isHovered) {
+        this.next();
+      }
+    }, this.autoplayInterval);
+  }
+
+  stopAutoplay() {
+    if (this.autoplayTimer) {
+      clearInterval(this.autoplayTimer);
+      this.autoplayTimer = null;
+    }
+  }
+
+  restartAutoplay() {
+    this.stopAutoplay();
+    this.startAutoplay();
+  }
+
+  bindEvents() {
+    if (this.prevBtn) {
+      this.prevBtn.addEventListener('click', () => {
+        this.prev();
+        this.restartAutoplay();
+      });
+    }
+    if (this.nextBtn) {
+      this.nextBtn.addEventListener('click', () => {
+        this.next();
+        this.restartAutoplay();
+      });
+    }
+
+    // Pause on hover
+    this.wrapper.addEventListener('mouseenter', () => {
+      this.isHovered = true;
+    });
+    this.wrapper.addEventListener('mouseleave', () => {
+      this.isHovered = false;
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    this.wrapper.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    this.wrapper.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          this.next();
+        } else {
+          this.prev();
+        }
+        this.restartAutoplay();
+      }
+    }, { passive: true });
+
+    // Handle resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        this.renderDots();
+        this.update();
+      }, 200);
+    });
+  }
+}
+
+/* ===== INITIALIZE SLIDERS ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  // Projects slider — auto-slide every 5s
+  new AutoSlider('projectsSlider', 'projectsDots', 5000);
+  
+  // Recommendations slider — auto-slide every 6s
+  new AutoSlider('recsSlider', 'recsDots', 6000);
+});
+</script>
+
+</body>
+</html>
